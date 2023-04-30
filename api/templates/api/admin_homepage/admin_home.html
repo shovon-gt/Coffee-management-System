@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'api/css/admin.css' %}" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div id="modal"></div>
+    <div id="modalDelete"></div>
+    <div class="container1">
+      <div class="box1">
+        <div id="logout">
+          <button id="logoutbutton" onclick="handleLogout()">Logout</button>
+        </div>
+        <h2 class="dashboard">Dashboard</h2>
+        <div class="p">
+          <a href="">Acme crop </a>
+          <a href=""> > Transaction</a>
+        </div>
+      </div>
+      <div class="box2">
+        
+      </div>
+      <div class="box3">
+          <h1>All the Register users are here.</h1>
+          <p>An overview of all your transactions over the year.</p>
+        
+      </div>
+      <div>
+        <div class="d-flex justify-content-center">
+			<div class="spinner-border"
+				role="status" id="loading">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div>
+        
+		<!-- <h1>All Registered User is here.</h1> -->
+        <div id="useradd">
+            <button onclick="handleAddUser()" id="adduser">Add New User</button>
+        </div>
+		<!-- table for showing data -->
+		<table id="employees">
+            
+        </table>
+    </div>
+    <script src="{% static 'api/js/admin_homepage.js' %}"></script>
+  </body>
+</html>

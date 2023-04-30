@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'api/css/user_home.css' %}" />
+    <title>User Dashboard</title>
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-box">
+
+      <div>
+        <div class="d-flex justify-content-center">
+			<div class="spinner-border"
+				role="status" id="loading">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div class="main-content">
+        <div id="img"> 
+            <img src="{% static 'api/login/Icon.png' %}" alt="">
+        </div >
+        <div id="content">
+          <h1 id="name"></h1>
+          <p id="email"></p>
+          <div class="value-display">
+            <p id="team"></p>
+            <h4 id="id"></h4>
+          </div>
+          <h4 id="balance"></h4>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div id="logout">
+      <button id="logoutbutton" onclick="handleLogout()">Logout</button>
+    </div>
+    <script src="{% static 'api/js/user_home.js' %}">
+      window.jQuery = window.$ = require('jquery');
+    </script>
+  </body>
+</html>
