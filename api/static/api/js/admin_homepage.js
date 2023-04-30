@@ -136,7 +136,7 @@ const handleRemoveValue = async(id)=>{
             username: user.username,
             email: user.email,
             team: user.team,
-            balance : user.balance ? user.balance-15 : 0,
+            balance : user.balance ? user.balance-15 : user.balance ==0? user.balance-15: user.balance-15,
             is_staff : user.is_staff
           }
           console.log(submitinfo);
@@ -163,7 +163,11 @@ const handleRemoveValue = async(id)=>{
 const handleEdit = async(id)=>{
     const response = await fetch(`http://172.16.50.62:8000/singleuser/${id}/`);
     const user = await response.json();
-    console.log("Satff staus"+user.is_staff)
+    console.log("Satff staus"+user.is_staff);
+
+
+
+
     if (user.team == null){
         user.team = "N/A";
     }
@@ -273,6 +277,17 @@ const editValue = async (e) => {
     const newUser = Object.fromEntries(formData.entries());
     console.log('e', newUser);
     console.log(newUser)
+
+    function hasWhiteSpace(username) {
+        return username.indexOf(' ') >= 0;
+      }
+      let spacecheck = hasWhiteSpace(newUser.username);
+      if (spacecheck) {
+        alert("Your can't use whitespaces in Username");
+        return;
+      }
+
+
     if (newUser.is_staff=="Admin"){
         newUser.is_staff = true;
     }
@@ -407,6 +422,14 @@ const handleAddUser = async()=>{
             balance : newUser.balance,
             is_staff : newUser.is_staff,
             
+          }
+          function hasWhiteSpace(username) {
+            return username.indexOf(' ') >= 0;
+          }
+          let spacecheck = hasWhiteSpace(newUser.username);
+          if (spacecheck) {
+            alert("Your can't use whitespaces in Username");
+            return;
           }
           console.log(submitinfo);
         try{

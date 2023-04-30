@@ -4,11 +4,22 @@ document.getElementById("register-form").addEventListener("submit", function(eve
     let email =document.getElementById("email").value;
     let password =document.getElementById("password1").value;
     let password2 =document.getElementById("password2").value;
-    
-    if (password != password2) {
+
+    function hasWhiteSpace(username) {
+      return username.indexOf(' ') >= 0;
+    }
+    let spacecheck = hasWhiteSpace(username);
+    if (spacecheck) {
+      alert("Your can't use whitespaces in Username");
+      return;
+    }
+
+
+    if (password != password2 ) {
         alert("Your password didn't match");
         return;
       }
+      
       fetch("http://172.16.50.62:8000/register_user/",{
         method: "POST",
       headers: {
