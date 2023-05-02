@@ -8,7 +8,7 @@ function validateLogin(e){
     const password = document.getElementById("password").value;
 
     const data = { username, password};
-    const baseUrl = 'http://172.16.50.62:8000'
+    const baseUrl = 'http://192.168.56.1:8000'
 
     fetch(`${baseUrl}/login/`, {
         method: "POST",

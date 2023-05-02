@@ -47,10 +47,32 @@
             <button onclick="handleAddUser()" id="adduser">Add New User</button>
         </div>
 		<!-- table for showing data -->
-		<table id="employees">
+		<table id="employees" class="py-4">
             
         </table>
     </div>
+    <div class="pagination-container container">
+      <nav  aria-label="...">
+        <ul id="pagination" class="pagination pagination-sm">
+          
+          
+          
+        </ul>
+      </nav>
+    </div>
+     <!-- Then put toasts within -->
+     {% comment %} <div id="myToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        See? Just like this.
+      </div>
+    </div> {% endcomment %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="{% static 'api/js/admin_homepage.js' %}"></script>
   </body>
 </html>
