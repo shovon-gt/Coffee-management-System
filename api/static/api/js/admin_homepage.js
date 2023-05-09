@@ -15,9 +15,9 @@ const renderPagination = (pages) => {
     const pagesArray = [];
     for(let i = 0; i < pages; i++) {
         const item = `
-        <li class="page-item " onclick="onPaginate(${i+1})">
+        <li class="page-item" onclick="onPaginate(${i+1})">
             <span class="page-link"  tabindex="-1">${i+1}</span>
-          </li>
+        </li>
         `
         pagesArray.push(item);
     }
@@ -99,7 +99,7 @@ const onPaginate = (pageNumber) => {
 // Defining async function
 async function getapi() {
   // Storing response
-  const response = await fetch("http://192.168.56.1:8000/userlist/");
+  const response = await fetch("http://172.16.50.62:8000/userlist/");
 
   // Storing data in form of JSON
   var data = await response.json();
@@ -117,87 +117,87 @@ function hideloader() {
   document.getElementById("loading").style.display = "none";
 }
 // Function to define innerHTML for HTML table
-function show(data) {
-  let tab = `<tr>
-		    <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Team</th>
-            <th>Balance</th>
-            <th>Staff Status</th>
-            <th>Action</th>
-		</tr>`;
+// function show(data) {
+//   let tab = `<tr>
+// 		    <th>ID</th>
+//             <th>Name</th>
+//             <th>Email</th>
+//             <th>Team</th>
+//             <th>Balance</th>
+//             <th>Staff Status</th>
+//             <th>Action</th>
+// 		</tr>`;
 
-  // Loop to access all rows
-  for (let r of data.data.data) {
-    if (r.team == null) {
-      r.team = "N/A";
-    }
-    if (r.is_staff == true) {
-      r.is_staff = "Admin";
-    } else {
-      r.is_staff = "User";
-    }
-    tab += `<tr>
-	<td>${r.id} </td>
-	<td>${r.username}</td>
-	<td>${r.email}</td>
-	<td>${r.team}</td>	
-    <td>${r.balance}</td>	
-    <td>${r.is_staff}</td>
-    <td><button class="btn btn-warning editButton" onclick="handleEdit(${r.id})">Edit</button>
-    <button class="btn btn-danger " onclick="handleRemoveValue(${r.id})">-15</button>
-    <button class="btn btn-primary" onclick="handleDeleteModal(${r.id})">Delete</button></td>	
-    </tr>`;
-  }
+//   // Loop to access all rows
+//   for (let r of data.data.data) {
+//     if (r.team == null) {
+//       r.team = "N/A";
+//     }
+//     if (r.is_staff == true) {
+//       r.is_staff = "Admin";
+//     } else {
+//       r.is_staff = "User";
+//     }
+//     tab += `<tr>
+// 	<td>${r.id} </td>
+// 	<td>${r.username}</td>
+// 	<td>${r.email}</td>
+// 	<td>${r.team}</td>	
+//     <td>${r.balance}</td>	
+//     <td>${r.is_staff}</td>
+//     <td><button class="btn btn-warning editButton" onclick="handleEdit(${r.id})">Edit</button>
+//     <button class="btn btn-danger " onclick="handleRemoveValue(${r.id})">-15</button>
+//     <button class="btn btn-primary" onclick="handleDeleteModal(${r.id})">Delete</button></td>	
+//     </tr>`;
+//   }
 
-  // Setting innerHTML as tab variable
-  document.getElementById("employees").innerHTML = tab;
+//   // Setting innerHTML as tab variable
+//   document.getElementById("employees").innerHTML = tab;
 
-  //pagination
+//   //pagination
 
-  $(document).ready(function () {
-    var totalRows = $("#employees").find("tbody tr:has(td)").length;
-    console.log("Rows=", totalRows);
-    var recordPerPage = 10;
-    var totalPages = Math.ceil(totalRows / recordPerPage);
-    var $pages = $('<div id="pages"></div>');
-    for (i = 0; i < totalPages; i++) {
-      $('<span class="pageNumber">&nbsp;' + (i + 1) + "</span>").appendTo(
-        $pages
-      );
-    }
-    $pages.appendTo("#employees");
+//   $(document).ready(function () {
+//     var totalRows = $("#employees").find("tbody tr:has(td)").length;
+//     console.log("Rows=", totalRows);
+//     var recordPerPage = 10;
+//     var totalPages = Math.ceil(totalRows / recordPerPage);
+//     var $pages = $('<div id="pages"></div>');
+//     for (i = 0; i < totalPages; i++) {
+//       $('<span class="pageNumber">&nbsp;' + (i + 1) + "</span>").appendTo(
+//         $pages
+//       );
+//     }
+//     $pages.appendTo("#employees");
 
-    $(".pageNumber").hover(
-      function () {
-        $(this).addClass("focus");
-      },
-      function () {
-        $(this).removeClass("focus");
-      }
-    );
+//     $(".pageNumber").hover(
+//       function () {
+//         $(this).addClass("focus");
+//       },
+//       function () {
+//         $(this).removeClass("focus");
+//       }
+//     );
 
-    $("table").find("tbody tr:has(td)").hide();
-    var tr = $("table tbody tr:has(td)");
-    for (var i = 0; i <= recordPerPage - 1; i++) {
-      $(tr[i]).show();
-    }
-    $("span").click(function (event) {
-      $("#employees").find("tbody tr:has(td)").hide();
-      var nBegin = ($(this).text() - 1) * recordPerPage;
-      var nEnd = $(this).text() * recordPerPage - 1;
-      for (var i = nBegin; i <= nEnd; i++) {
-        $(tr[i]).show();
-      }
-    });
-  });
-}
+//     $("table").find("tbody tr:has(td)").hide();
+//     var tr = $("table tbody tr:has(td)");
+//     for (var i = 0; i <= recordPerPage - 1; i++) {
+//       $(tr[i]).show();
+//     }
+//     $("span").click(function (event) {
+//       $("#employees").find("tbody tr:has(td)").hide();
+//       var nBegin = ($(this).text() - 1) * recordPerPage;
+//       var nEnd = $(this).text() * recordPerPage - 1;
+//       for (var i = nBegin; i <= nEnd; i++) {
+//         $(tr[i]).show();
+//       }
+//     });
+//   });
+// }
 
 // Delete User by clicking delete button.
 const handleRemoveUser = async (id) => {
   try {
-    const response = await fetch(`http://192.168.56.1:8000/userdelete/${id}/`, {
+    const response = await fetch(`http://172.16.50.62:8000/userdelete/${id}/`, {
       method: "DELETE",
     });
     await getapi();
@@ -209,7 +209,7 @@ const handleRemoveUser = async (id) => {
 // 	console.log('ID', id)
 // }
 const handleRemoveValue = async (id) => {
-  const response = await fetch(`http://192.168.56.1:8000/singleuser/${id}/`);
+  const response = await fetch(`http://172.16.50.62:8000/singleuser/${id}/`);
   const user = await response.json();
   console.log(user);
   try {
@@ -227,7 +227,7 @@ const handleRemoveValue = async (id) => {
     console.log(submitinfo);
 
     const response = await fetch(
-      `http://192.168.56.1:8000/userupdate/${user.id}/`,
+      `http://172.16.50.62:8000/userupdate/${user.id}/`,
       {
         method: "PUT",
         headers: {
@@ -245,7 +245,7 @@ const handleRemoveValue = async (id) => {
 };
 
 const handleEdit = async (id) => {
-  const response = await fetch(`http://192.168.56.1:8000/singleuser/${id}/`);
+  const response = await fetch(`http://172.16.50.62:8000/singleuser/${id}/`);
   const user = await response.json();
   console.log("Satff staus" + user.is_staff);
 
@@ -383,7 +383,7 @@ const editValue = async (e) => {
   console.log(submitinfo);
   try {
     const response = await fetch(
-      `http://192.168.56.1:8000/userupdate/${newUser.id}/`,
+      `http://172.16.50.62:8000/userupdate/${newUser.id}/`,
       {
         method: "PUT",
         headers: {
@@ -504,7 +504,7 @@ const addUser = async (e) => {
   }
   console.log(submitinfo);
   try {
-    const response = await fetch(`http://192.168.56.1:8000/register_user/`, {
+    const response = await fetch(`http://172.16.50.62:8000/register_user/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -522,7 +522,7 @@ const addUser = async (e) => {
 const handleLogout = () => {
   window.localStorage.clear();
   window.location.reload(true);
-  window.location.replace(`http://192.168.56.1:8000/`);
+  window.location.replace(`http://172.16.50.62:8000/`);
 };
 
 const onDeleteUser = async (id) => {

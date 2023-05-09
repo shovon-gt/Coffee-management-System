@@ -20,7 +20,7 @@ document.getElementById("register-form").addEventListener("submit", function(eve
         return;
       }
       
-      fetch("http://192.168.56.1:8000/register_user/",{
+      fetch("http://172.16.50.62:8000/register_user/",{
         method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -37,7 +37,7 @@ document.getElementById("register-form").addEventListener("submit", function(eve
             alert(data.username[0]);
         }
         else{
-            window.location.replace("http://192.168.56.1:8000/")
+            window.location.replace("http://172.16.50.62:8000/")
         }
     })
     .catch(error => {

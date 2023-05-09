@@ -4,7 +4,7 @@ var id = localStorage.id;
 console.log(localStorage.id);
 // console.log(id);
 const api_url =
-	`http://192.168.56.1:8000/singleuser/${id}/`;
+	`http://172.16.50.62:8000/singleuser/${id}/`;
 
 // Defining async function
 async function getapi(url) {
