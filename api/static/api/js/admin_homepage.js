@@ -390,7 +390,7 @@ const editValue = async (e) => {
           "Content-Type": "application/json",
         },
 
-        body: JSON.stringify(submitinfo),
+        body: JSON.stringify(submitinfo),newUser
       }
     );
     await getapi();
