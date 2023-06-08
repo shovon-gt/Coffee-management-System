@@ -531,19 +531,6 @@ const onDeleteUser = async (id) => {
 };
 
 const handleDeleteModal = async (id) => {
-  // const response = await fetch(`http://127.0.0.1:8000/singleuser/${id}/`);
-  // const user = await response.json();
-  // console.log("Satff staus"+user.is_staff)
-  // if (user.team == null){
-  //     user.team = "N/A";
-  // }
-
-  // if (user.is_staff==true){
-  //     user.is_staff = "Admin";
-  // }
-  // else{
-  //     user.is_staff = "User"
-  // }
   const formData = `  
     <div onclick="onModalClose()" class="backdrop">
     <div onclick="handleModalPress(event)" onpointerdown="handleModalPress(event)" class="my-4 m-4 px-4 py-4 card popup1" >
